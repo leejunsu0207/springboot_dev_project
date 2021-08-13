@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    $(document).ready(function (){
+
+        $("#putBtn").on("click",function(){
+           let boardNoVal = $("#boardNo").val();
+           let titleVal = $("#title").val();
+           let contentVal = $("#content").val();
+           let writerVal = $("#writer").val();
+
+           let boardObject = {
+               boardNo : boardNoVal,
+               title : titleVal,
+               content : contentVal,
+               write : writerVal
+           };
+
+           $.ajax({
+              type:"put",
+              url:"/board/"+boardNoVal,
+               data:JSON.stringify(boardObject),
+               contentType: "application/json; charset=utf-8",
+               success:function (result){
+                  console.log("result"+result);
+                  if(result === "SUCCESS"){
+                      alert("success")
+                  }
+               }
+
+           });
+
+        });
+
+        $("#putHeaderBtn").on("click",function(){
+            let boardNoVal = $("#boardNo").val();
+            let titleVal = $("#title").val();
+            let contentVal = $("#content").val();
+            let writerVal = $("#writer").val();
+
+            let boardObject = {
+                boardNo : boardNoVal,
+                title : titleVal,
+                content : contentVal,
+                write : writerVal
+            };
+
+            $.ajax({
+                type:"put",
+                url:"/board/"+boardNoVal,
+                headers:{
+                    "X-HTTP-Method-Override":"PUT"
+                },
+                data:JSON.stringify(boardObject),
+                contentType: "application/json; charset=utf-8",
+                success:function (result){
+                    console.log("result"+result);
+                    if(result === "SUCCESS"){
+                        alert("success")
+                    }
+                }
+
+            });
+
+        });
+
+    });
+</script>
+<body>
+    <h1>ajaxHome</h1>
+    <form>
+        boardNo : <input type="text" name="boardNo" value="" id="boardNo"><br>
+        title : <input type="text" name="title" value="" id="title"><br>
+        content : <input type="text" name="content" value="" id="content"><br>
+        writer : <input type="text" name="writer" value="" id="writer"><br>
+    </form>
+
+    <div>
+        <button id="putBtn">MODIFY(put)</button>
+        <button id="putHeaderBtn">MODIFY(put with header)</button>
+    </div>
+</body>
+</html>

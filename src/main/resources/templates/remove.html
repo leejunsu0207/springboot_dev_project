@@ -3,12 +3,9 @@
     <title>board</title>
 </head>
 <body>
-<h3>read</h3>
-<form th:action="@{/board/get}" method="get">
-    <button type="submit" nema="modify">modify</button>
+<h3>remove</h3>
+<form th:action="@{/board/post}" method="post">
     <button type="submit" nema="remove">remove</button>
 </form>
-
-<a th:href="@{/board/get?list}">list</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>board</title>
 </head>
@@ -7,5 +7,6 @@
 <form th:action="@{/board/post}" method="post">
     <button type="submit" nema="register">register</button>
 </form>
+<a th:href="@{/board/get?list}">list</a>
 </body>
 </html>
