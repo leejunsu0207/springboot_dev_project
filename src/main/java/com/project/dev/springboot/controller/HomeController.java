@@ -40,6 +40,42 @@ public class HomeController {
         log.info("home0101");
     }
 
+    @GetMapping("/sub/goHome0102")
+    public void home0102(){
+        log.info("home0102");
+    }
+
+    @GetMapping("/goHome0201")
+    public String hoem0201(){
+        log.info("home0201");
+        return "home0201";
+    }
+
+    @GetMapping("/sub/goHome0202")
+    public String hoem0202(){
+        log.info("home0202");
+        return "home0202";
+    }
+
+    @GetMapping("/sub/goHome0203")
+    public String home0203(){
+        log.info("home0203");
+        return "sub/home0203";
+    }
+
+    @GetMapping("/goHome0204")
+    public String home0204(){
+        log.info("home0204");
+        return "redirect:/sub/goHome0205";
+    }
+
+    @GetMapping("/sub/goHome0205")
+    public String home0205(){
+        log.info("home0205");
+        return "/sub/goHome0205";
+    }
+
+
     @GetMapping("/formHome")
     public String formHome(){
         return "formHome";
