@@ -7,66 +7,225 @@
 
     $(document).ready(function (){
 
-        $("#putBtn").on("click",function(){
-           let boardNoVal = $("#boardNo").val();
-           let titleVal = $("#title").val();
-           let contentVal = $("#content").val();
-           let writerVal = $("#writer").val();
+        $("#getBtn").on("click", function (){
+            let boardNo = $("#boardNo").val();
 
-           let boardObject = {
-               boardNo : boardNoVal,
-               title : titleVal,
-               content : contentVal,
-               write : writerVal
-           };
+            console.log(boardNo);
 
-           $.ajax({
-              type:"put",
-              url:"/board/"+boardNoVal,
-               data:JSON.stringify(boardObject),
-               contentType: "application/json; charset=utf-8",
-               success:function (result){
-                  console.log("result"+result);
-                  if(result === "SUCCESS"){
-                      alert("success")
-                  }
-               }
+            $.get("/board/"+boardNo, function (data){
+               console.log(data);
 
-           });
+               alert(JSON.stringify(data));
+            });
 
         });
 
-        $("#putHeaderBtn").on("click",function(){
-            let boardNoVal = $("#boardNo").val();
-            let titleVal = $("#title").val();
-            let contentVal = $("#content").val();
-            let writerVal = $("#writer").val();
+        $("#getJsonBtn").on("click", function (){
+            let boardNo = $("#boardNo").val();
 
-            let boardObject = {
-                boardNo : boardNoVal,
-                title : titleVal,
-                content : contentVal,
-                write : writerVal
-            };
+            console.log(boardNo);
 
             $.ajax({
-                type:"put",
-                url:"/board/"+boardNoVal,
+
+               type:"get",
+                url:"/board/"+boardNo,
                 headers:{
-                    "X-HTTP-Method-Override":"PUT"
+                   "Accept":"application/json"
                 },
-                data:JSON.stringify(boardObject),
-                contentType: "application/json; charset=utf-8",
                 success:function (result){
-                    console.log("result"+result);
-                    if(result === "SUCCESS"){
-                        alert("success")
-                    }
+                   console.log("result : "+result);
+                   alert(JSON.stringify(result));
                 }
 
             });
 
         });
+
+        $("#getXmlBtn").on("click", function (){
+            let boardNo = $("#boardNo").val();
+
+            console.log(boardNo);
+
+            $.ajax({
+
+                type:"get",
+                url:"/board/"+boardNo,
+                headers:{
+                    "Accept":"application/xml"
+                },
+                success:function (result){
+                    console.log("result : "+result);
+                    alert(xmlToString(result));
+                }
+
+            });
+
+        });
+
+        function xmlToString(xmlData){
+            let xmlString;
+            if(window.ActiveXObject){
+                xmlString = xmlData.xml;
+            }else {
+                xmlString = (new XMLSerializer().serializeToString(xmlData));
+            }
+            return xmlString;
+
+        }
+
+
+
+
+
+
+        // $("#postBtn").on("click",function(){
+        //     let boardNoVal = $("#boardNo").val();
+        //     let titleVal = $("#title").val();
+        //     let contentVal = $("#content").val();
+        //     let writerVal = $("#writer").val();
+        //
+        //     let boardObject = {
+        //         boardNo : boardNoVal,
+        //         title : titleVal,
+        //         content : contentVal,
+        //         write : writerVal
+        //     };
+        //
+        //     $.ajax({
+        //         type:"post",
+        //         url:"/board/"+boardNoVal,
+        //         data:JSON.stringify(boardObject),
+        //         contentType: "application/json; charset=utf-8",
+        //         success:function (result){
+        //             console.log("result"+result);
+        //             if(result === "SUCCESS"){
+        //                 alert("success")
+        //             }
+        //         }
+        //
+        //     });
+        //
+        // });
+        //
+        // $("#postJsonBtn").on("click",function(){
+        //     let boardNoVal = $("#boardNo").val();
+        //     let titleVal = $("#title").val();
+        //     let contentVal = $("#content").val();
+        //     let writerVal = $("#writer").val();
+        //
+        //     let boardObject = {
+        //         boardNo : boardNoVal,
+        //         title : titleVal,
+        //         content : contentVal,
+        //         write : writerVal
+        //     };
+        //
+        //     $.ajax({
+        //         type:"put",
+        //         url:"/board/"+boardNoVal,
+        //         data:JSON.stringify(boardObject),
+        //         contentType: "application/json; charset=utf-8",
+        //         success:function (result){
+        //             console.log("result"+result);
+        //             if(result === "SUCCESS"){
+        //                 alert("success")
+        //             }
+        //         }
+        //
+        //     });
+        //
+        // });
+        //
+        // $("#putXmlBtn").on("click",function(){
+        //     let boardNoVal = $("#boardNo").val();
+        //     let titleVal = $("#title").val();
+        //     let contentVal = $("#content").val();
+        //     let writerVal = $("#writer").val();
+        //
+        //     let xmlData = "<Board>";
+        //     xmlData += "<boardNo>"+boardNoVal+"</boardNo>";
+        //     xmlData += "<title>"+titleVal+"</title>";
+        //     xmlData += "<content>"+titleVal+"</content>";
+        //     xmlData += "<writer>"+writerVal+"</writer>";
+        //     xmlData += "<regData>2021-08-19</regData>";
+        //     xmlData += "</Board>";
+        //
+        //     $.ajax({
+        //         type:"put",
+        //         url:"/board/"+boardNoVal,
+        //         data:xmlData,
+        //         contentType: "application/xml; charset=utf-8",
+        //         success:function (result){
+        //             console.log("result"+result);
+        //             if(result === "SUCCESS"){
+        //                 alert("success")
+        //             }
+        //         }
+        //
+        //     });
+        //
+        // });
+
+        // $("#putBtn").on("click",function(){
+        //    let boardNoVal = $("#boardNo").val();
+        //    let titleVal = $("#title").val();
+        //    let contentVal = $("#content").val();
+        //    let writerVal = $("#writer").val();
+        //
+        //    let boardObject = {
+        //        boardNo : boardNoVal,
+        //        title : titleVal,
+        //        content : contentVal,
+        //        write : writerVal
+        //    };
+        //
+        //    $.ajax({
+        //       type:"put",
+        //       url:"/board/"+boardNoVal,
+        //        data:JSON.stringify(boardObject),
+        //        contentType: "application/json; charset=utf-8",
+        //        success:function (result){
+        //           console.log("result"+result);
+        //           if(result === "SUCCESS"){
+        //               alert("success")
+        //           }
+        //        }
+        //
+        //    });
+        //
+        // });
+        //
+        // $("#putHeaderBtn").on("click",function(){
+        //     let boardNoVal = $("#boardNo").val();
+        //     let titleVal = $("#title").val();
+        //     let contentVal = $("#content").val();
+        //     let writerVal = $("#writer").val();
+        //
+        //     let boardObject = {
+        //         boardNo : boardNoVal,
+        //         title : titleVal,
+        //         content : contentVal,
+        //         write : writerVal
+        //     };
+        //
+        //     $.ajax({
+        //         type:"put",
+        //         url:"/board/"+boardNoVal,
+        //         headers:{
+        //             "X-HTTP-Method-Override":"PUT"
+        //         },
+        //         data:JSON.stringify(boardObject),
+        //         contentType: "application/json; charset=utf-8",
+        //         success:function (result){
+        //             console.log("result"+result);
+        //             if(result === "SUCCESS"){
+        //                 alert("success")
+        //             }
+        //         }
+        //
+        //     });
+        //
+        // });
 
     });
 </script>
@@ -80,8 +239,16 @@
     </form>
 
     <div>
-        <button id="putBtn">MODIFY(put)</button>
-        <button id="putHeaderBtn">MODIFY(put with header)</button>
+<!--        <button id="putBtn">MODIFY(put)</button>-->
+<!--        <button id="putHeaderBtn">MODIFY(put with header)</button>-->
+
+<!--        <button id="postBtn">MODIFY(post)</button>-->
+<!--        <button id="postJsonBtn">MODIFY(put json)</button>-->
+<!--        <button id="putXmlBtn">MODIFY(put xml)</button>-->
+
+        <button id="getBtn">READ</button>
+        <button id="getJsonBtn">READ (JSON)</button>
+        <button id="getXmlBtn">READ (XML)</button>
     </div>
-</body>
-</html>
+        </body>
+        </html>

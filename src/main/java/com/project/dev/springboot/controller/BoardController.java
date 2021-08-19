@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 
 @Slf4j
 @Controller
@@ -34,10 +36,30 @@ public class BoardController {
         return "board/modify";
     }
 
-    @PutMapping("/{boardNo}")
+    @PostMapping("/{boardNo}")
     public ResponseEntity<String> modify(@PathVariable("boardNo") int boardNo, @RequestBody Board board){
 
         log.info("modify");
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        return entity;
+    }
+
+    @PutMapping(value = "/{boardNo}", consumes = "application/json")
+    public ResponseEntity<String> modifyByJson(@PathVariable("boardNo") int boardNo, @RequestBody Board board){
+
+        log.info("modifyByJson");
+
+        ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+        return entity;
+    }
+
+    @PutMapping(value = "/{boardNo}", consumes = "application/xml")
+    public ResponseEntity<String> modifyByXml(@PathVariable("boardNo") int boardNo, @RequestBody Board board){
+
+        log.info("modifyByXml boardNo : "+boardNo);
+
+        log.info("modifyByXml board :"+board);
 
         ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
         return entity;
@@ -70,11 +92,49 @@ public class BoardController {
         return "board/list";
     }
 
-    @GetMapping(value = "/get", params = "read")
-    public String read(){
+    @GetMapping(value = "/{boardNo}", produces = "application/xml")
+    public ResponseEntity<Board> readToXml(@PathVariable("boardNo") int boardNo){
+        log.info("readToXml");
+
+        Board board = new Board();
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("lee");
+        board.setRegDate(LocalDateTime.now());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
+    @GetMapping(value = "/{boardNo}", produces = "application/json")
+    public ResponseEntity<Board> readToJson(@PathVariable("boardNo") int boardNo){
+        log.info("readToJson");
+
+        Board board = new Board();
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("lee");
+        board.setRegDate(LocalDateTime.now());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
+    }
+
+    @GetMapping("/{boardNo}")
+    public ResponseEntity<Board> read(@PathVariable("boardNo") int boardNo){
         log.info("read");
 
-        return "board/read";
+        Board board = new Board();
+        board.setTitle("제목");
+        board.setContent("내용입니다.");
+        board.setWriter("lee");
+        board.setRegDate(LocalDateTime.now());
+
+        ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.OK);
+
+        return entity;
     }
 
     @GetMapping("/read2/{no}")

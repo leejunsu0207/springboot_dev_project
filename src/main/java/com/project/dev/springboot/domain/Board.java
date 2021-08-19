@@ -5,8 +5,9 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 //  @ToString, @Getter, @Setter, @EqualsAndHashCode, @RequiredArgsConstructor 합쳐 놓은것 =>@Data
-@ToString
-@Builder
+//@ToString
+//@Builder
+@Data
 public class Board {
 
     private int boardNo;
