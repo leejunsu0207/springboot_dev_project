@@ -208,15 +208,15 @@ class BoardTest {
 //        System.out.println(board);
 //    }
 
-    @Test
-    public void testMemberBuilder(){
-        Member member = Member.builder()
-                .userId("userId1")
-                .password("password1")
-                .build();
-
-        System.out.println(member );
-    }
+//    @Test
+//    public void testMemberBuilder(){
+//        Member member = Member.builder()
+//                .userId("userId1")
+//                .password("password1")
+//                .build();
+//
+//        System.out.println(member );
+//    }
 
 
 }

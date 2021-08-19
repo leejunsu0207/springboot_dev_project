@@ -1,17 +1,21 @@
 package com.project.dev.springboot.controller;
 
+import com.project.dev.springboot.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.ws.RequestWrapper;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+import java.util.*;
 
 
 @Slf4j
@@ -73,6 +77,86 @@ public class HomeController {
     public String home0205(){
         log.info("home0205");
         return "/sub/goHome0205";
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome0301")
+    public Member home0301(){
+        log.info("home0301");
+
+        Member member = new Member();
+
+        return member;
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome04")
+    public List<Member> home04(){
+        log.info("home04");
+        List<Member> list = new ArrayList<>();
+        Member member = new Member();
+        list.add(member);
+        Member member1 = new Member();
+        list.add(member1);
+        return list;
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome05")
+    public Map<String, Member> home05(){
+        log.info("home05");
+        Map<String,Member> map = new HashMap<>();
+        Member member = new Member();
+        map.put("key1",member);
+        Member member1 = new Member();
+        map.put("key2",member1);
+        return map;
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome06")
+    public ResponseEntity<Void> home06(){
+        log.info("home06");
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome07")
+    public ResponseEntity<String> home07(){
+        log.info("home07");
+        return new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome08")
+    public ResponseEntity<Member> home08(){
+        log.info("home08");
+        Member member = new Member();
+        return new ResponseEntity<Member>(member,HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome09")
+    public ResponseEntity<List<Member>> home09(){
+        log.info("home09");
+        List<Member> list = new ArrayList<>();
+        Member member = new Member();
+        list.add(member);
+        Member member1 = new Member();
+        list.add(member1);
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome10")
+    public ResponseEntity<Map<String, Member>> home10(){
+        log.info("home10");
+        Map<String,Member> map = new HashMap<>();
+        Member member = new Member();
+        map.put("key1",member);
+        Member member1 = new Member();
+        map.put("key2",member1);
+        return new ResponseEntity<>(map,HttpStatus.OK);
     }
 
 
