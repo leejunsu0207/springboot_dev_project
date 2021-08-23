@@ -2,9 +2,12 @@ package com.project.dev.springboot.controller;
 
 import com.project.dev.springboot.domain.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.ws.RequestWrapper;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -157,6 +163,57 @@ public class HomeController {
         Member member1 = new Member();
         map.put("key2",member1);
         return new ResponseEntity<>(map,HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome1101")
+    public ResponseEntity<byte[]> home1101() throws Exception{
+        log.info("home1101");
+        InputStream in = null;
+        ResponseEntity<byte[]> entity = null;
+
+        try{
+            HttpHeaders headers = new HttpHeaders();
+            in = new FileInputStream("C:\\TEMP\\sample.png");
+            headers.setContentType(MediaType.IMAGE_PNG);
+            entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+        }catch (Exception e){
+            e.printStackTrace();
+            new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        }finally {
+            in.close();
+        }
+        return entity;
+
+
+    }
+
+    @ResponseBody
+    @GetMapping("/goHome1102")
+    public ResponseEntity<byte[]> home1102() throws Exception{
+
+        log.info("home1102");
+
+        String fileName = "test.zip";
+        InputStream in = null;
+        ResponseEntity<byte[]> entity = null;
+
+        try{
+            HttpHeaders headers = new HttpHeaders();
+            in = new FileInputStream("C:\\TEMP\\sample.png");
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.add("Content-Disposition", "attachment; filename=\""+new String(fileName.getBytes("UTF-8"),"ISO-8859-1")+"\"");
+
+            entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+        }catch (Exception e){
+            e.printStackTrace();
+            new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+        }finally {
+            in.close();
+        }
+        return entity;
+
+
     }
 
 
