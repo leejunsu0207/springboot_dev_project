@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -316,7 +317,7 @@ public class MemberController {
     }
 
     @PostMapping("/registerDate01")
-    public String registerDate01(LocalDate dateOfBirth){
+    public String registerDate01(Date dateOfBirth){
         log.info(" >>>>>>>>>>>>>>>>>>>>>>>>>>>> registerDate01");
 
         if(dateOfBirth != null){
@@ -329,7 +330,7 @@ public class MemberController {
     }
 
     @PostMapping("/registerDate02")
-    public String registerDate02(@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfBirth){
+    public String registerDate02(@DateTimeFormat(pattern = "yyyyMMdd") Date dateOfBirth){
         log.info(" >>>>>>>>>>>>>>>>>>>>>>>>>>>> registerDate02");
 
         if(dateOfBirth != null){

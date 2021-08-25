@@ -1,8 +1,7 @@
 package com.project.dev.springboot.domain;
-
+import com.project.dev.springboot.domain.Card;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 import java.util.List;
 
