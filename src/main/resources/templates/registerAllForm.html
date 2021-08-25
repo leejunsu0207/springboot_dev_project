@@ -1,0 +1,151 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>home</title>
+</head>
+<body>
+<h1>registerAllForm</h1>
+
+    <form>
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="userId"></td>
+            </tr>
+            <tr>
+                <td>비번</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="userName"></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>생일</td>
+                <td><input type="text" name="dateOfbirth"></td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td><input type="radio" name="gender" value="male">male</td>
+                <td><input type="radio" name="gender" value="female">female</td>
+                <td><input type="radio" name="gender" value="other">other</td>
+            </tr>
+            <tr>
+                <td>개발자여부</td>
+                <td><input type="checkbox" name="developer" value="Y"></td>
+            </tr>
+            <tr>
+                <td>외국인여부</td>
+                <td><input type="checkbox" name="foreigner" value="false"></td>
+            </tr>
+            <tr>
+                <td>국적</td>
+                <td>
+                    <select name="nationality" class="jobs">
+                        <option value="Korea" selected>대한민국</option>
+                        <option value="Germary">독일</option>
+                        <option value="Australia">호주</option>
+                        <option value="Canada">캐나다</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>차소유</td>
+                <td>
+                    <select name="cars" multiple>
+                        <option value="volvo" selected>volvo</option>
+                        <option value="audi">audi</option>
+                        <option value="benz">benz</option>
+                        <option value="bmw">bmw</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>차소유</td>
+                <td>
+                    <select name="carArray" multiple>
+                        <option value="volvo" selected>volvo</option>
+                        <option value="audi">audi</option>
+                        <option value="benz">benz</option>
+                        <option value="bmw">bmw</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>차소유</td>
+                <td>
+                    <select name="carList" multiple>
+                        <option value="volvo" selected>volvo</option>
+                        <option value="audi">audi</option>
+                        <option value="benz">benz</option>
+                        <option value="bmw">bmw</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="Sport">sport <br>
+                    <input type="checkbox" name="hobby" value="Music">Music <br>
+                    <input type="checkbox" name="hobby" value="Movie">Movie
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <input type="checkbox" name="hobbyArray" value="Sport">sport <br>
+                    <input type="checkbox" name="hobbyArray" value="Music">Music <br>
+                    <input type="checkbox" name="hobbyArray" value="Movie">Movie
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <input type="checkbox" name="hobbyList" value="Sport">sport <br>
+                    <input type="checkbox" name="hobbyList" value="Music">Music <br>
+                    <input type="checkbox" name="hobbyList" value="Movie">Movie
+                </td>
+            </tr>
+            <tr>
+                <td>우편번호</td>
+                <td><input type="text" name="address.postCode"> </td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td><input type="text" name="address.location"> </td>
+            </tr>
+            <tr>
+                <td>카드1 - 번호</td>
+                <td><input type="text" name="cardList[0].no"> </td>
+            </tr>
+            <tr>
+                <td>카드1 - 유효년월</td>
+                <td><input type="text" name="cardList[0].validMonth"> </td>
+            </tr>
+            <tr>
+                <td>카드2 - 번호</td>
+                <td><input type="text" name="cardList[1].no"> </td>
+            </tr>
+            <tr>
+                <td>카드2 - 유효년월</td>
+                <td><input type="text" name="cardList[1].validMonth"> </td>
+            </tr>
+            <tr>
+                <td>소개</td>
+                <td><textarea name="introduction" rows="6" cols="50"></textarea> </td>
+            </tr>
+
+        </table>
+
+        <table>
+            <tr>
+                <td><input type="submit" name="btnSubmit" value="등록"></td>
+                <td><input type="reset" name="btnReset" value="리셋"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

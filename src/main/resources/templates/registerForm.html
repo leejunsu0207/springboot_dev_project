@@ -5,20 +5,168 @@
 <body>
 <h1>register Form</h1>
 
-<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=1234}">registerByGet01?userId=leejunsu&dateOfBirth=1234</a> <br>
-<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=2021-08-08}">registerByGet01?userId=leejunsu&dateOfBirth=2021-08-08</a> <br>
-<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=20210808}">registerByGet01?userId=leejunsu&dateOfBirth=20210808</a> <br>
-<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=2021/08/08}">registerByGet01?userId=leejunsu&dateOfBirth=2021/08/08</a> <br>
-<a th:href="@{registerByGet02?userId=leejunsu&dateOfBirth=20210808}">registerByGet02?userId=leejunsu&dateOfBirth=20210808</a> <br>
 
-
-<form th:action="@{/register}" method="post">
-    userId : <input type="text" name="userId" value="leejunsu1"> <br>
-    password : <input type="text" name="password" value="1q2w3e"> <br>
-    dateOfBirth : <input type="text" name="dateOfBirth" value="20210824"> <br>
-    <input type="submit" value="register">
+<form th:action="@{/registerUserId}" method="post">
+    userId : <input type="text" name="userId"><br>
+    <input type="submit" value="registerUserId">
 </form>
 
+<form th:action="@{/registerMemberUserId}" method="post">
+    userId : <input type="text" name="userId"><br>
+    <input type="submit" value="registerMemberUserId">
+</form>
+
+<form th:action="@{/registerPassword}" method="post">
+    password : <input type="password" name="password"><br>
+    <input type="submit" value="registerPassword">
+</form>
+
+<form th:action="@{/registerRadio}" method="post">
+    gender : <br>
+    <td><input type="radio" name="gender" value="male">male</td><br>
+    <td><input type="radio" name="gender" value="female">female</td><br>
+    <td><input type="radio" name="gender" value="other">other</td><br>
+    <input type="submit" value="registerRadio">
+</form>
+
+<form th:action="@{/registerSelect}" method="post">
+    nationality : <select name="nationality" class="jobs">
+        <option value="Korea" selected>대한민국</option>
+        <option value="Germary">독일</option>
+        <option value="Australia">호주</option>
+        <option value="Canada">캐나다</option>
+    </select><br>
+    <input type="submit" value="registerSelect">
+</form>
+
+<form th:action="@{/registerMultipleSelect01}" method="post">
+    cars : <select name="cars" multiple>
+                <option value="volvo">volvo</option>
+                <option value="audi">audi</option>
+                <option value="benz">benz</option>
+                <option value="bmw">bmw</option>
+            </select><br>
+    <input type="submit" value="registerMultipleSelect01">
+</form>
+
+<form th:action="@{/registerMultipleSelect02}" method="post">
+    cars : <select name="carArray" multiple>
+                <option value="volvo">volvo</option>
+                <option value="audi">audi</option>
+                <option value="benz">benz</option>
+                <option value="bmw">bmw</option>
+            </select><br>
+    <input type="submit" value="registerMultipleSelect02">
+</form>
+
+<form th:action="@{/registerMultipleSelect03}" method="post">
+    cars : <select name="carList" multiple>
+                <option value="volvo">volvo</option>
+                <option value="audi">audi</option>
+                <option value="benz">benz</option>
+                <option value="bmw">bmw</option>
+            </select><br>
+    <input type="submit" value="registerMultipleSelect03">
+</form>
+
+<form th:action="@{/registerCheckbox01}" method="post">
+    hobby : <br>
+    <input type="checkbox" name="hobby" value="Sport">sport <br>
+    <input type="checkbox" name="hobby" value="Music">Music <br>
+    <input type="checkbox" name="hobby" value="Movie">Movie <br>
+    <input type="submit" value="registerCheckbox01">
+</form>
+
+<form th:action="@{/registerCheckbox02}" method="post">
+    hobby : <br>
+    <input type="checkbox" name="hobbyArray" value="Sport">sport <br>
+    <input type="checkbox" name="hobbyArray" value="Music">Music <br>
+    <input type="checkbox" name="hobbyArray" value="Movie">Movie <br>
+    <input type="submit" value="registerCheckbox02">
+</form>
+
+<form th:action="@{/registerCheckbox03}" method="post">
+    hobby : <br>
+    <input type="checkbox" name="hobbyList" value="Sport">sport <br>
+    <input type="checkbox" name="hobbyList" value="Music">Music <br>
+    <input type="checkbox" name="hobbyList" value="Movie">Movie <br>
+    <input type="submit" value="registerCheckbox03">
+</form>
+
+<form th:action="@{/registerCheckbox04}" method="post">
+    developer : <input type="checkbox" name="developer" value="Y"><br>
+    <input type="submit" value="registerCheckbox04">
+</form>
+
+<form th:action="@{/registerCheckbox05}" method="post">
+    foreigner : <input type="checkbox" name="foreigner" value="false"><br>
+    <input type="submit" value="registerCheckbox05">
+</form>
+
+<form th:action="@{/registerAddress}" method="post">
+    postCode : <input type="text" name="postCode"><br>
+    location :<input type="text" name="location"><br>
+    <input type="submit" value="registerAddress">
+</form>
+
+<form th:action="@{/registerUserAddress}" method="post">
+    address.postCode : <input type="text" name="address.postCode"><br>
+    address.location :<input type="text" name="address.location"><br>
+    <input type="submit" value="registerUserAddress">
+</form>
+
+<form th:action="@{/registerUserCardList}" method="post">
+    카드1 - 번호 : <input type="text" name="cardList[0].no"> <br>
+    카드1 - 유효년월 : <input type="text" name="cardList[0].validMonth"> <br>
+    카드2 - 번호 : <input type="text" name="cardList[1].no"> <br>
+    카드2 - 유효년월 : <input type="text" name="cardList[1].validMonth"> <br>
+    <input type="submit" value="registerUserCardList">
+</form>
+
+<form th:action="@{/registerTextArea}" method="post">
+    introduction : <br>
+    <textarea name="introduction" rows="6" cols="50"></textarea><br>
+    <input type="submit" value="registerTextArea">
+</form>
+
+<form th:action="@{/registerDate01}" method="post">
+    dateOfBirth : <br>
+    <input type="text" name="dateOfBirth"> <br>
+    <input type="submit" value="registerDate01">
+</form>
+
+<form th:action="@{/registerDate02}" method="post">
+    dateOfBirth : <br>
+    <input type="text" name="dateOfBirth"> <br>
+    <input type="submit" value="registerDate02">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=1234}">registerByGet01?userId=leejunsu&dateOfBirth=1234</a> <br>-->
+<!--<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=2021-08-08}">registerByGet01?userId=leejunsu&dateOfBirth=2021-08-08</a> <br>-->
+<!--<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=20210808}">registerByGet01?userId=leejunsu&dateOfBirth=20210808</a> <br>-->
+<!--<a th:href="@{registerByGet01?userId=leejunsu&dateOfBirth=2021/08/08}">registerByGet01?userId=leejunsu&dateOfBirth=2021/08/08</a> <br>-->
+<!--<a th:href="@{registerByGet02?userId=leejunsu&dateOfBirth=20210808}">registerByGet02?userId=leejunsu&dateOfBirth=20210808</a> <br>-->
+
+
+<!--<form th:action="@{/register}" method="post">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu1"> <br>-->
+<!--    password : <input type="text" name="password" value="1q2w3e"> <br>-->
+<!--    dateOfBirth : <input type="text" name="dateOfBirth" value="20210824"> <br>-->
+<!--    <input type="submit" value="register">-->
+<!--</form>-->
 
 
 
