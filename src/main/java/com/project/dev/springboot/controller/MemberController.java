@@ -4,11 +4,10 @@ import com.project.dev.springboot.domain.*;
 import com.sun.org.apache.xpath.internal.objects.XString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
@@ -17,141 +16,286 @@ import java.util.Date;
 import java.util.List;
 
 @Slf4j
-@Controller
+@RestController
 public class MemberController {
 
-    @GetMapping("/registerForm")
-    public String registerForm(){
-        log.info("registerForm");
 
-        return "registerForm";
+
+    // Ajax 방식 요청 처리
+    @GetMapping("/register/{userId}")
+    public ResponseEntity<String> register01(@PathVariable("userId") String userId){
+        log.info("register01");
+
+        log.info("userId = " + userId);
+
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
+
+        return entity;
     }
 
+    @PostMapping("/register/{userId}/{password}")
+    public ResponseEntity<String> register02(@PathVariable("userId") String userId, @PathVariable("password") String password){
+        log.info("register02");
 
-    // 파일 업로드 폼 방식 요청 처리
-    @PostMapping("/registerFile01")
-    public String registerFile01(MultipartFile picture) throws Exception {
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile01");
+        log.info("userId = " + userId);
+        log.info("password = " + password);
 
-        log.info("originName : " + picture.getOriginalFilename());
-        log.info("size : " + picture.getSize());
-        log.info("contentType : " + picture.getContentType());
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
-        return "success";
-
+        return entity;
     }
 
-    @PostMapping("/registerFile02")
-    public String registerFile02(String userId, String password, MultipartFile picture) throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile02");
+    @PostMapping("/register03")
+    public ResponseEntity<String> register03(@RequestBody Member member){
+        log.info("register03");
 
-        log.info("userId = " +userId);
-        log.info("password  = " +password);
+        log.info("userId = " + member.getUserId());
+        log.info("password = " + member.getPassword());
 
-        log.info("originName : " + picture.getOriginalFilename());
-        log.info("size : " + picture.getSize());
-        log.info("contentType : " + picture.getContentType());
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
-        return "success";
-
+        return entity;
     }
 
-    @PostMapping("/registerFile03")
-    public String registerFile03(Member member, MultipartFile picture) throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile03");
+    @PostMapping("/register04")
+    public ResponseEntity<String> register04(String userId){
+        log.info("register04");
 
-        log.info("userId = " +member.getUserId());
-        log.info("password  = " +member.getPassword());
+        log.info("userId = " + userId);
 
-        log.info("originName : " + picture.getOriginalFilename());
-        log.info("size : " + picture.getSize());
-        log.info("contentType : " + picture.getContentType());
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
-        return "success";
-
+        return entity;
     }
 
-    @PostMapping("/registerFile04")
-    public String registerFile04(FileMember fileMember) throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile04");
+    @PostMapping("/register05")
+    public ResponseEntity<String> register05(String userId, String password){
+        log.info("register05");
 
-        log.info("userId = " +fileMember.getUserId());
-        log.info("password  = " +fileMember.getPassword());
+        log.info("userId = " + userId);
+        log.info("password = " + password);
 
-        MultipartFile picture = fileMember.getPicture();
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
-        log.info("originName : " + picture.getOriginalFilename());
-        log.info("size : " + picture.getSize());
-        log.info("contentType : " + picture.getContentType());
-
-        return "success";
-
+        return entity;
     }
 
-    @PostMapping("/registerFile05")
-    public String registerFile05(MultipartFile picture, MultipartFile picture2)throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile05");
+    @PostMapping("/register/{userId}")
+    public ResponseEntity<String> register06(@PathVariable("userId") String userId, @RequestBody Member member){
+        log.info("register06");
 
-        log.info("picture originName : " + picture.getOriginalFilename());
-        log.info("picture size : " + picture.getSize());
-        log.info("picture contentType : " + picture.getContentType());
+        log.info("userId = " + userId);
 
-        log.info("picture2 originName : " + picture2.getOriginalFilename());
-        log.info("picture2 size : " + picture2.getSize());
-        log.info("picture2 contentType : " + picture2.getContentType());
+        log.info("member.getUserId() = " + member.getUserId());
+        log.info("member.getPassword() = " + member.getPassword());
 
-        return "success";
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
+        return entity;
     }
 
-    @PostMapping("/registerFile06")
-    public String registerFile06(List<MultipartFile> pictureList)throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile06");
+    @PostMapping("register07")
+    public ResponseEntity<String> register07(@RequestBody List<Member> memberList){
+        log.info("register07");
 
-        log.info("registerFile06 picture.size() : " + pictureList.size());
-
-        for(MultipartFile picture : pictureList) {
-            log.info("picture originName : " + picture.getOriginalFilename());
-            log.info("picture size : " + picture.getSize());
-            log.info("picture contentType : " + picture.getContentType());
+        for(Member member : memberList) {
+            log.info("member.getUserId() = " + member.getUserId());
+            log.info("member.getPassword() = " + member.getPassword());
         }
 
-        return "success";
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
+        return entity;
     }
 
-    @PostMapping("/registerFile07")
-    public String registerFile07(MultiFileMember multiFileMember)throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile07");
+    @PostMapping("register08")
+    public ResponseEntity<String> register08(@RequestBody Member member){
+        log.info("register08");
 
-        List<MultipartFile> pictureList = multiFileMember.getPictureList();
-        log.info("registerFile07 picture.size() : " + pictureList.size());
+        log.info("member.getUserId() = " + member.getUserId());
+        log.info("member.getPassword() = " + member.getPassword());
 
-        for(MultipartFile picture : pictureList) {
-            log.info("picture originName : " + picture.getOriginalFilename());
-            log.info("picture size : " + picture.getSize());
-            log.info("picture contentType : " + picture.getContentType());
+        Address address = member.getAddress();
+
+        if(address != null){
+            log.info("address.getPostCode() = " + address.getPostCode());
+            log.info("address.getLocation() = " + address.getLocation());
+        }else{
+            log.info("address == null");
         }
 
-        return "success";
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
+        return entity;
     }
 
-    @PostMapping("/registerFile08")
-    public String registerFile08(MultipartFile[] pictureList)throws Exception{
-        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile08");
+    @PostMapping("register09")
+    public ResponseEntity<String> register09(@RequestBody Member member){
+        log.info("register09");
 
-        log.info("registerFile08 pictureList.length : " + pictureList.length);
+        log.info("userId = " + member.getUserId());
+        log.info("password = " + member.getPassword());
 
-        for(MultipartFile picture : pictureList) {
-            log.info("picture originName : " + picture.getOriginalFilename());
-            log.info("picture size : " + picture.getSize());
-            log.info("picture contentType : " + picture.getContentType());
+        List<Card> cardList = member.getCardList();
+
+        if(cardList != null){
+           log.info("cardList.size() = "+cardList.size());
+
+           for(int i=0; i < cardList.size(); i++){
+               Card card = cardList.get(i);
+               log.info("card.getNo() = "+card.getNo());
+               log.info("card.getValidMonth() = "+card.getValidMonth());
+           }
+        }else{
+            log.info("cardList == null");
         }
 
-        return "success";
+        ResponseEntity<String> entity = new ResponseEntity<>("success", HttpStatus.OK);
 
+        return entity;
     }
+
+
+
+
+
+
+
+
+
+
+//    @GetMapping("/registerForm")
+//    public String registerForm(){
+//        log.info("registerForm");
+//
+//        return "registerForm";
+//    }
+//
+//
+//    // 파일 업로드 폼 방식 요청 처리
+//    @PostMapping("/registerFile01")
+//    public String registerFile01(MultipartFile picture) throws Exception {
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile01");
+//
+//        log.info("originName : " + picture.getOriginalFilename());
+//        log.info("size : " + picture.getSize());
+//        log.info("contentType : " + picture.getContentType());
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile02")
+//    public String registerFile02(String userId, String password, MultipartFile picture) throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile02");
+//
+//        log.info("userId = " +userId);
+//        log.info("password  = " +password);
+//
+//        log.info("originName : " + picture.getOriginalFilename());
+//        log.info("size : " + picture.getSize());
+//        log.info("contentType : " + picture.getContentType());
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile03")
+//    public String registerFile03(Member member, MultipartFile picture) throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile03");
+//
+//        log.info("userId = " +member.getUserId());
+//        log.info("password  = " +member.getPassword());
+//
+//        log.info("originName : " + picture.getOriginalFilename());
+//        log.info("size : " + picture.getSize());
+//        log.info("contentType : " + picture.getContentType());
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile04")
+//    public String registerFile04(FileMember fileMember) throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile04");
+//
+//        log.info("userId = " +fileMember.getUserId());
+//        log.info("password  = " +fileMember.getPassword());
+//
+//        MultipartFile picture = fileMember.getPicture();
+//
+//        log.info("originName : " + picture.getOriginalFilename());
+//        log.info("size : " + picture.getSize());
+//        log.info("contentType : " + picture.getContentType());
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile05")
+//    public String registerFile05(MultipartFile picture, MultipartFile picture2)throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile05");
+//
+//        log.info("picture originName : " + picture.getOriginalFilename());
+//        log.info("picture size : " + picture.getSize());
+//        log.info("picture contentType : " + picture.getContentType());
+//
+//        log.info("picture2 originName : " + picture2.getOriginalFilename());
+//        log.info("picture2 size : " + picture2.getSize());
+//        log.info("picture2 contentType : " + picture2.getContentType());
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile06")
+//    public String registerFile06(List<MultipartFile> pictureList)throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile06");
+//
+//        log.info("registerFile06 picture.size() : " + pictureList.size());
+//
+//        for(MultipartFile picture : pictureList) {
+//            log.info("picture originName : " + picture.getOriginalFilename());
+//            log.info("picture size : " + picture.getSize());
+//            log.info("picture contentType : " + picture.getContentType());
+//        }
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile07")
+//    public String registerFile07(MultiFileMember multiFileMember)throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile07");
+//
+//        List<MultipartFile> pictureList = multiFileMember.getPictureList();
+//        log.info("registerFile07 picture.size() : " + pictureList.size());
+//
+//        for(MultipartFile picture : pictureList) {
+//            log.info("picture originName : " + picture.getOriginalFilename());
+//            log.info("picture size : " + picture.getSize());
+//            log.info("picture contentType : " + picture.getContentType());
+//        }
+//
+//        return "success";
+//
+//    }
+//
+//    @PostMapping("/registerFile08")
+//    public String registerFile08(MultipartFile[] pictureList)throws Exception{
+//        log.info(" >>>>>>>>>>>>>>>>>>>>>>>> registerFile08");
+//
+//        log.info("registerFile08 pictureList.length : " + pictureList.length);
+//
+//        for(MultipartFile picture : pictureList) {
+//            log.info("picture originName : " + picture.getOriginalFilename());
+//            log.info("picture size : " + picture.getSize());
+//            log.info("picture contentType : " + picture.getContentType());
+//        }
+//
+//        return "success";
+//
+//    }
 
 
 

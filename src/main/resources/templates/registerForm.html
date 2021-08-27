@@ -2,74 +2,321 @@
 <head>
     <title>Home</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("#registerBtn01").on("click", function(){
+
+           $.get("/register/leejunsu", function(result){
+               console.log("resutl : "+result);
+               if(result == "success"){
+                   alert("success");
+               }
+           }) ;
+
+        });
+
+        $("#registerBtn02").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password
+            };
+
+            $.ajax({
+               type : "post",
+               url : "/register/leejunsu/test00011",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                   console.log("result : " + result);
+                   if(result == "success"){
+                       alert("success");
+                   }
+                }
+            });
+
+        });
+
+        $("#registerBtn03").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register03",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn04").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register04",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn05").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register05?userId=leejusu010101",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn06").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register/leejunsu",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn07").on("click", function(){
+
+            let userObjectArray = [
+                {
+                    userId : "user1111",
+                    password : "password1111"
+                },
+                {
+                    userId : "user2222",
+                    password : "password2222"
+                }
+            ];
+
+            $.ajax({
+                type : "post",
+                url : "/register07",
+                data : JSON.stringify(userObjectArray),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn08").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password,
+                address : {
+                    postCode : "7777",
+                    location : "seoul"
+                }
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register08",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+        $("#registerBtn09").on("click", function(){
+
+            let userId = $("#uesrId").val();
+            let password = $("#password").val();
+
+            let userObject = {
+                userId : userId,
+                password : password,
+                carList : [
+                    {
+                        no : "77",
+                        validMonth : "20210827"
+                    },
+                    {
+                        no : "777",
+                        validMonth : "20210827"
+                    }
+                ]
+            };
+
+            $.ajax({
+                type : "post",
+                url : "/register09",
+                data : JSON.stringify(userObject),
+                contentType : "application/json; charset=utf-8",
+                success : function(result){
+                    console.log("result : " + result);
+                    if(result == "success"){
+                        alert("success");
+                    }
+                }
+            });
+
+        });
+
+
+
+
+    });
+
+</script>
 <body>
 <h1>register Form</h1>
 
+    <form>
+        userId : <input type="text" name="userId" value="leejunsu" id="userId">
+        password : <input type="text" name="password" value="password7777" id="password">
+    </form>
 
-
-<form th:action="@{/registerFile01}" method="post" enctype="multipart/form-data">
-    <input type="file" name="picture"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile02}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="picture"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile03}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="picture"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile04}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="picture"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile05}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="picture"><br>
-    <input type="file" name="picture2"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="pictureList[0]"><br>
-    <input type="file" name="pictureList[1]"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="pictureList"><br>
-    <input type="file" name="pictureList"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile07}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="pictureList[0]"><br>
-    <input type="file" name="pictureList[1]"><input type="submit">
-</form>
-
-<form th:action="@{/registerFile08}" method="post" enctype="multipart/form-data">
-    userId : <input type="text" name="userId" value="leejunsu"><br>
-    password : <input type="text" name="password" value="kepco!123@"><br>
-    <input type="file" name="pictureList" multiple><input type="submit">
-</form>
+<button id="registerBtn01">registerBtn01</button>
+<button id="registerBtn02">registerBtn02</button>
+<button id="registerBtn03">registerBtn03</button>
+<button id="registerBtn04">registerBtn04</button>
+<button id="registerBtn05">registerBtn05</button>
+<button id="registerBtn06">registerBtn06</button>
+<button id="registerBtn07">registerBtn07</button>
+<button id="registerBtn08">registerBtn08</button>
+<button id="registerBtn09">registerBtn09</button>
 
 
 
 
+<!--<form th:action="@{/registerFile01}" method="post" enctype="multipart/form-data">-->
+<!--    <input type="file" name="picture"><input type="submit">-->
+<!--</form>-->
 
+<!--<form th:action="@{/registerFile02}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="picture"><input type="submit">-->
+<!--</form>-->
 
+<!--<form th:action="@{/registerFile03}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="picture"><input type="submit">-->
+<!--</form>-->
 
+<!--<form th:action="@{/registerFile04}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="picture"><input type="submit">-->
+<!--</form>-->
 
+<!--<form th:action="@{/registerFile05}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="picture"><br>-->
+<!--    <input type="file" name="picture2"><input type="submit">-->
+<!--</form>-->
+
+<!--<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="pictureList[0]"><br>-->
+<!--    <input type="file" name="pictureList[1]"><input type="submit">-->
+<!--</form>-->
+
+<!--<form th:action="@{/registerFile06}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="pictureList"><br>-->
+<!--    <input type="file" name="pictureList"><input type="submit">-->
+<!--</form>-->
+
+<!--<form th:action="@{/registerFile07}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="pictureList[0]"><br>-->
+<!--    <input type="file" name="pictureList[1]"><input type="submit">-->
+<!--</form>-->
+
+<!--<form th:action="@{/registerFile08}" method="post" enctype="multipart/form-data">-->
+<!--    userId : <input type="text" name="userId" value="leejunsu"><br>-->
+<!--    password : <input type="text" name="password" value="kepco!123@"><br>-->
+<!--    <input type="file" name="pictureList" multiple><input type="submit">-->
+<!--</form>-->
 
 
 

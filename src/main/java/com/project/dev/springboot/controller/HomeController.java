@@ -45,6 +45,12 @@ public class HomeController {
 
     }
 
+    @GetMapping("/registerForm")
+    public String registerForm(){
+        log.info("registerForm");
+        return "registerForm";
+    }
+
     @GetMapping("/goHome0101")
     public void home0101(){
         log.info("home0101");

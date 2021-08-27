@@ -10,16 +10,14 @@ import java.util.List;
 @ToString
 public class Member {
 
-    private String userId;
-    private String password;
+    private String userId = "leejunsu";
+    private String password = "test";
+    private Address address;
+    private List<Card> cardList;
 
 
-
-
-
-
-
-
+//    private String userId;
+//    private String password;
 
 
 //    private String userId;
