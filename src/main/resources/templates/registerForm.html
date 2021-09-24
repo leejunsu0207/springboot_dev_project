@@ -5,44 +5,81 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
 <body>
-<h1>Ajax File Upload</h1>
-<div>
-    <input type="file" id="inputFile">
-</div>
 
-<script type="text/javascript">
+<h1>register form</h1>
 
-    $(document).ready(function(){
+<form actin="result.html" th:action="@{/register01}" method="post">
+    userId : <input type="text" name="userId" value="leejusu"><br>
+    password : <input type="text" name="password" value="passowrd"><br>
 
-        $("#inputFile").on("change", function(){
-            console.log("change")
+    <input type="submit" value="register01">
+</form>
+<form actin="result.html" th:action="@{/register02}" method="post">
+    userId : <input type="text" name="userId" value="leejusu"><br>
+    password : <input type="text" name="password" value="passowrd"><br>
 
-            let files = event.target.files;
-            let file = files[0];
+    <input type="submit" value="register02">
+</form>
+<form actin="result.html" th:action="@{/register03}" method="post">
+    userId : <input type="text" name="userId" value="leejusu"><br>
+    password : <input type="text" name="password" value="passowrd"><br>
 
-            console.log(file);
+    <input type="submit" value="register03">
+</form>
+<form actin="result.html" th:action="@{/register04}" method="post">
+    userId : <input type="text" name="userId" value="leejusu"><br>
+    password : <input type="text" name="password" value="passowrd"><br>
 
-            let formData = new FormData();
-
-            formData.append("file", file);
-
-            $.ajax({
-               type:"post",
-               url:"/uploadAjax",
-               data:formData,
-               dataType:"text",
-                processData:false,
-                contentType:false,
-                success:function(data){
-                   alert(data);
-                }
-            });
-        });
+    <input type="submit" value="register04">
+</form>
 
 
-    });
 
-</script>
+
+
+
+
+
+
+
+<!--<h1>Ajax File Upload</h1>-->
+<!--<div>-->
+<!--    <input type="file" id="inputFile">-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+
+<!--    $(document).ready(function(){-->
+
+<!--        $("#inputFile").on("change", function(){-->
+<!--            console.log("change")-->
+
+<!--            let files = event.target.files;-->
+<!--            let file = files[0];-->
+
+<!--            console.log(file);-->
+
+<!--            let formData = new FormData();-->
+
+<!--            formData.append("file", file);-->
+
+<!--            $.ajax({-->
+<!--               type:"post",-->
+<!--               url:"/uploadAjax",-->
+<!--               data:formData,-->
+<!--               dataType:"text",-->
+<!--                processData:false,-->
+<!--                contentType:false,-->
+<!--                success:function(data){-->
+<!--                   alert(data);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+
+<!--    });-->
+
+<!--</script>-->
 
 
 <!--    <form>-->
