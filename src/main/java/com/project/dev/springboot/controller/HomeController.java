@@ -62,13 +62,13 @@ public class HomeController {
     }
 
     @GetMapping("/goHome0201")
-    public String hoem0201(){
+    public String home0201(){
         log.info("home0201");
         return "home0201";
     }
 
     @GetMapping("/sub/goHome0202")
-    public String hoem0202(){
+    public String home0202(){
         log.info("home0202");
         return "home0202";
     }
